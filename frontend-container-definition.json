@@ -1,0 +1,51 @@
+[
+  {
+    "name": "frontend-container",
+    "image": "200448310251.dkr.ecr.ap-south-1.amazonaws.com/nginx-ecr-repo:latest",
+    "cpu": 256,
+    "memory": 512,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 3000,
+      
+        "protocol": "tcp"
+      }
+    ]
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+]
