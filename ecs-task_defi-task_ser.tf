@@ -56,7 +56,7 @@ resource "aws_ecs_task_definition" "frontend_task" {
   execution_role_arn = aws_iam_role.ecs_execution_role.arn
   task_role_arn = aws_iam_role.ecs_task_role.arn
 
-  container_definitions = file("${path.module}/container-definition.json")
+  container_definitions = file("${path.module}/frontend-container-definition.json")
 }
 
 resource "aws_ecs_task_definition" "backend_task" {
@@ -69,7 +69,7 @@ resource "aws_ecs_task_definition" "backend_task" {
   execution_role_arn = aws_iam_role.ecs_execution_role.arn
   task_role_arn      = aws_iam_role.ecs_task_role.arn
 
-  container_definitions = file("${path.module}/backend-container.json")
+  container_definitions = file("${path.module}/backend-container-definition.json")
 }
 
 
