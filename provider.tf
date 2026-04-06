@@ -5,8 +5,8 @@ terraform {
        version = "~>6.32.0 "    }
   }
   backend "s3" {
-    bucket = "col-lms-project-2026"
-    key = "col-lms-project-2026/state.file/terraform.tfstate"
+    bucket = "col-lms-project-2026-02"
+    key = "col-lms-project-2026-02/state.file/terraform.tfstate"
     region = "ap-south-1"
     encrypt = true
     
