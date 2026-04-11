@@ -19,7 +19,7 @@ tg_type = "ip" #changes from "instance"
 alb_type = "application"
 
 #lt
-key_pair_lt = "col-dev-jenking-keypair"
+key_pair_lt = "jenkins-keypair-pem"
 
 #ecs---------------------------------------------------------------------
  task_def_network_mode = "awsvpc" #change from bridge
