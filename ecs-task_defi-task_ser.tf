@@ -47,7 +47,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_policy" {
 }
 
 resource "aws_ecs_task_definition" "frontend_task" {
-  family                   = "login-task"
+  family                   = "frontend-task"
   requires_compatibilities = ["EC2"]
   network_mode             =  var.task_def_network_mode   
   cpu                      = "256"
@@ -120,7 +120,7 @@ resource "aws_ecs_service" "backend_service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.backend_tg.arn
     container_name   = "backend-container"
-    container_port   = 3000
+    container_port   = 5000
   }
 
   depends_on = [aws_lb_listener.listener]
