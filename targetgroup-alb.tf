@@ -25,7 +25,7 @@ resource "aws_lb_target_group" "backend_tg" {
   name        = "backend-tg"
   vpc_id      = aws_vpc.this_vpc.id
   target_type = var.tg_type
-  port        = 3000
+  port        = 5000
   protocol    = "HTTP"
 
   health_check {
