@@ -44,7 +44,7 @@ resource "aws_launch_template" "lt" {
     name = "dev-ecs-lt"
 
     image_id = data.aws_ami.ecs_ami.id
-    instance_type = "t3.micro"
+    instance_type = "m7i-flex.large"
 
     key_name = var.key_pair_lt
 
@@ -69,8 +69,8 @@ EOF
 
 resource "aws_autoscaling_group" "ecs_asg" {
   name = "col-lms-ecs-asg-01"
-  desired_capacity    = 1
-  max_size            = 1
+  desired_capacity    = 2
+  max_size            = 2
   min_size            = 1
   vpc_zone_identifier = [ aws_subnet.this_pub_sub_01.id, aws_subnet.this_pub_sub_02.id ]
 
