@@ -25,6 +25,14 @@ resource "aws_iam_role_policy_attachment" "ecs_execution_policy" {
   role       = aws_iam_role.ecs_execution_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
+resource "aws_iam_role_policy_attachment" "ecs_full_access" {
+  role       = aws_iam_role.ecs_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonECS_FullAccess"
+}
+resource "aws_iam_role_policy_attachment" "ecr_full_access" {
+  role       = aws_iam_role.ecs_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess"
+}
 
 #this role is used inside the containcer...
 resource "aws_iam_role" "ecs_task_role" {
