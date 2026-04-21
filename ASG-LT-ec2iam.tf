@@ -42,13 +42,18 @@ data "aws_ami" "ecs_ami" {
 
 resource "aws_launch_template" "lt" {
     name = "dev-ecs-lt"
-
     image_id = data.aws_ami.ecs_ami.id
     instance_type = "m7i-flex.large"
-
     key_name = var.key_pair_lt
 
-    vpc_security_group_ids = [ aws_security_group.ecs_sg.id ]
+    # ✅ ADD THIS BLOCK — enables public IP on ASG-launched instances
+  network_interfaces {
+    associate_public_ip_address = true
+    security_groups             = [aws_security_group.ecs_sg.id]
+    delete_on_termination       = true
+  }
+
+    #vpc_security_group_ids = [ aws_security_group.ecs_sg.id ]
 
     iam_instance_profile {
       name = aws_iam_instance_profile.ecs_profile.name
