@@ -22,4 +22,4 @@ alb_type = "application"
 key_pair_lt = "jenkins-keypair-pem"
 
 #ecs---------------------------------------------------------------------
- task_def_network_mode = "default" #change from bridge
+ task_def_network_mode = "awsvpc" #change from bridge
