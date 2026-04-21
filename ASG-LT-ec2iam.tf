@@ -36,7 +36,12 @@ data "aws_ami" "ecs_ami" {
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-ecs-hvm-*-x86_64-ebs"]
+    # ✅ Change from amzn2 → al2023
+    values = ["al2023-ami-ecs-hvm-*-x86_64"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
   }
 }   
 
@@ -61,7 +66,8 @@ resource "aws_launch_template" "lt" {
     user_data = base64encode(<<EOF
 #!/bin/bash
 echo ECS_CLUSTER=${aws_ecs_cluster.ecs_cluster.name} >> /etc/ecs/ecs.config
-yum install -y ec2-instance-connect
+# AL2023 uses dnf instead of yum
+dnf install -y ec2-instance-connect
 EOF
   )
 
